@@ -5,7 +5,7 @@
     @include('partials.head')
 </head>
 
-<body class="min-h-screen bg-white antialiased dark:bg-linear-to-b dark:from-neutral-950 dark:to-neutral-900">
+<body class="min-h-screen bg-white antialiased dark:bg-linear-to-b dark:from-neutral-900 dark:to-neutral-800">
     <div
         class="relative grid h-dvh flex-col items-center justify-center px-8 sm:px-0 lg:max-w-none lg:grid-cols-2 lg:px-0">
         <div
