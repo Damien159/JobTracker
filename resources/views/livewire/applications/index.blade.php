@@ -1,28 +1,3 @@
-<?php
-
-namespace App\Livewire\Applications;
-
-use App\Models\Application;
-use Illuminate\Support\Facades\Auth;
-use Livewire\Component;
-
-class Index extends Component
-{
-    public function render()
-    {
-        $applications = Application::query()
-            ->where('user_id', Auth::id())
-            ->with(['company', 'statusHistories'])
-            ->latest('application_date')
-            ->get();
-
-        return view('livewire.applications.index', [
-            'applications' => $applications,
-        ]);
-    }
-}
-?>
-
 <div>
     <div class="max-w-5xl mx-auto p-6">
         <div class="flex items-center justify-between mb-6">
@@ -32,7 +7,6 @@ class Index extends Component
                 + Neue Bewerbung
             </a>
         </div>
-
         @if ($applications->isEmpty())
             <div class="text-center py-16 border rounded-lg border-dashed">
                 <p class="text-gray-500">Noch keine Bewerbungen erfasst.</p>
@@ -57,8 +31,7 @@ class Index extends Component
                                 <td class="px-4 py-3">{{ $application->company->name }}</td>
                                 <td class="px-4 py-3">{{ $application->job_title }}</td>
                                 <td class="px-4 py-3">
-                                    <span
-                                        class="px-2 py-1 rounded-full text-xs bg-brand-gray/20 text-brand-dark dark:text-white">
+                                    <span class="px-2 py-1 rounded-full text-xs bg-brand-gray/20 text-brand-dark dark:text-white">
                                         {{ $application->statusHistories->first()?->status ?? '—' }}
                                     </span>
                                 </td>
