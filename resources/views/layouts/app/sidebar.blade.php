@@ -15,6 +15,14 @@
                     <flux:sidebar.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Dashboard') }}
                     </flux:sidebar.item>
+
+                    <flux:sidebar.item icon="briefcase" :href="route('applications.index')" :current="request()->routeIs('applications.*')" wire:navigate>
+                        {{ __('Bewerbungen') }}
+                    </flux:sidebar.item>
+
+                    <flux:sidebar.item icon="plus-circle" :href="route('applications.create')" :current="request()->routeIs('applications.create')" wire:navigate>
+                        {{ __('Neue Bewerbung') }}
+                    </flux:sidebar.item>
                 </flux:sidebar.group>
             </flux:sidebar.nav>
 
