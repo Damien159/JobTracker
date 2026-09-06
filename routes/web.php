@@ -8,6 +8,7 @@ Route::redirect('/', '/login')->name('home');
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
     Route::get('/applications', \App\Livewire\Applications\Index::class)->name('applications.index');
+    Route::get('/applications/{applicationId}', \App\Livewire\Applications\Show::class)->name('applications.show');
 });
 
 require __DIR__.'/settings.php';

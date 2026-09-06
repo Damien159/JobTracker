@@ -31,6 +31,18 @@
                     <tbody>
                         @foreach ($applications as $application)
                             <tr class="border-b last:border-0 hover:bg-gray-50 dark:hover:bg-neutral-900">
+                                <td class="px-4 py-3">
+                                    <a href="{{ route('applications.show', $application->id) }}" wire:navigate
+                                        class="hover:text-brand-accent">
+                                        {{ $application->company->name }}
+                                    </a>
+                                </td>
+                                <td class="px-4 py-3">
+                                    <a href="{{ route('applications.show', $application->id) }}" wire:navigate
+                                        class="hover:text-brand-accent">
+                                        {{ $application->job_title }}
+                                    </a>
+                                </td>
                                 <td class="px-4 py-3">{{ $application->company->name }}</td>
                                 <td class="px-4 py-3">{{ $application->job_title }}</td>
                                 <td class="px-4 py-3">
