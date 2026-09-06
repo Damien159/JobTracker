@@ -25,10 +25,13 @@ JobTracker ist ein persönliches Lern- und Portfolio-Projekt, das den gesamten B
 **Features:**
 - [x] Login/Register (Standard des Starterkits)
 - [x] Eigenes Design für Login/Register (Split-Layout, Markenfarben)
-- [ ] Bewerbungen anlegen
-- [ ] Übersichtsliste der Bewerbungen
+- [x] Bewerbungen anlegen (Modal auf der Übersichtsseite, mit Autocomplete/Find-or-Create für Firma und Kontakt)
+- [x] Übersichtsliste der Bewerbungen
+- [ ] Status einer Bewerbung ändern
+- [ ] Detailansicht einer einzelnen Bewerbung
+- [ ] Bewerbung bearbeiten/löschen
 - [ ] Dashboard/Statistiken
-- [ ] Streak-System
+- [ ] Gamification (Streak-System)
 - [ ] Automatische E-Mail-Erinnerungen (5 Tage ohne Rückmeldung)
 - [ ] Automatische E-Mail-Statuserkennung
 - [ ] Dokumenten-Upload (Lebenslauf/Anschreiben)
