@@ -34,9 +34,14 @@
                                 <td class="px-4 py-3">{{ $application->company->name }}</td>
                                 <td class="px-4 py-3">{{ $application->job_title }}</td>
                                 <td class="px-4 py-3">
-                                    <span class="px-2 py-1 rounded-full text-xs bg-brand-gray/20 text-brand-dark dark:text-white">
-                                        {{ $application->statusHistories->first()?->status ?? '—' }}
-                                    </span>
+                                    <select wire:change="updateStatus({{ $application->id }}, $event.target.value)"
+                                        class="text-xs rounded-full border-gray-300 bg-brand-gray/20 text-brand-dark dark:text-white px-2 py-1">
+                                        @foreach (['beworben', 'interview', 'zusage', 'absage'] as $statusOption)
+                                            <option value="{{ $statusOption }}" @selected($application->statusHistories->first()?->status === $statusOption)>
+                                                {{ ucfirst($statusOption) }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </td>
                                 <td class="px-4 py-3">{{ $application->application_date->format('d.m.Y') }}</td>
                             </tr>
