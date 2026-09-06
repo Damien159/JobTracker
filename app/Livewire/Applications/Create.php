@@ -156,9 +156,9 @@ class Create extends Component
             'changed_at' => now(),
         ]);
 
-        session()->flash('success', 'Bewerbung wurde angelegt.');
-
-        $this->redirect(route('applications.index'), navigate: true);
+        $this->reset(); // Formular leeren für die nächste Eingabe
+        $this->dispatch('application-created'); // Event an Index senden
+        $this->dispatch('close-modal', name: 'create-application'); // Modal schließen
     }
 
     public function render()
@@ -166,4 +166,3 @@ class Create extends Component
         return view('livewire.applications.create');
     }
 }
-?>

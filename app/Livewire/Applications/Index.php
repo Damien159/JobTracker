@@ -4,10 +4,16 @@ namespace App\Livewire\Applications;
 
 use App\Models\Application;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Index extends Component
 {
+    #[On('application-created')]
+    public function refreshList(): void
+    {
+       
+    }
     public function render()
     {
         $applications = Application::query()

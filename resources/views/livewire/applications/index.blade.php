@@ -2,17 +2,20 @@
     <div class="max-w-5xl mx-auto p-6">
         <div class="flex items-center justify-between mb-6">
             <h1 class="text-2xl font-bold">Meine Bewerbungen</h1>
-            <a href="{{ route('applications.create') }}" wire:navigate
-                class="bg-brand-accent text-white px-4 py-2 rounded-lg text-sm font-medium">
-                + Neue Bewerbung
-            </a>
+            <flux:modal.trigger name="create-application">
+                <flux:button variant="primary" class="bg-brand-accent">
+                    + Neue Bewerbung
+                </flux:button>
+            </flux:modal.trigger>
         </div>
         @if ($applications->isEmpty())
             <div class="text-center py-16 border rounded-lg border-dashed">
                 <p class="text-gray-500">Noch keine Bewerbungen erfasst.</p>
-                <a href="{{ route('applications.create') }}" wire:navigate class="text-brand-accent font-medium">
-                    Erste Bewerbung anlegen
-                </a>
+                <flux:modal.trigger name="create-application">
+                    <flux:button variant="ghost" class="text-brand-accent">
+                        Erste Bewerbung anlegen
+                    </flux:button>
+                </flux:modal.trigger>
             </div>
         @else
             <div class="overflow-x-auto border rounded-lg">
@@ -43,4 +46,8 @@
             </div>
         @endif
     </div>
+
+    <flux:modal name="create-application" class="md:w-[600px]">
+        @livewire('applications.create')
+    </flux:modal>
 </div>

@@ -44,9 +44,12 @@
                     @endif
                 </div>
 
-                <input type="email" wire:model="contactEmail" class="w-full rounded-lg border-gray-300 mb-3" placeholder="E-Mail">
-                <input type="text" wire:model="contactPhone" class="w-full rounded-lg border-gray-300 mb-3" placeholder="Telefon">
-                <input type="text" wire:model="contactPosition" class="w-full rounded-lg border-gray-300" placeholder="Position (z. B. HR)">
+                <input type="email" wire:model="contactEmail" class="w-full rounded-lg border-gray-300 mb-3"
+                    placeholder="E-Mail">
+                <input type="text" wire:model="contactPhone" class="w-full rounded-lg border-gray-300 mb-3"
+                    placeholder="Telefon">
+                <input type="text" wire:model="contactPosition" class="w-full rounded-lg border-gray-300"
+                    placeholder="Position (z. B. HR)">
             </fieldset>
 
             <div>
@@ -69,7 +72,8 @@
 
             <div>
                 <label class="block text-sm font-medium mb-1">Gehaltswunsch (€)</label>
-                <input type="number" step="0.01" wire:model="desiredSalary" class="w-full rounded-lg border-gray-300">
+                <input type="number" step="0.01" wire:model="desiredSalary"
+                    class="w-full rounded-lg border-gray-300">
             </div>
 
             <div>
@@ -96,9 +100,14 @@
                 <textarea wire:model="notes" rows="3" class="w-full rounded-lg border-gray-300"></textarea>
             </div>
 
-            <button type="submit" class="bg-brand-accent text-white px-4 py-2 rounded-lg">
-                Bewerbung speichern
-            </button>
+            <div class="flex justify-end gap-3">
+                <flux:modal.close>
+                    <flux:button variant="ghost">Abbrechen</flux:button>
+                </flux:modal.close>
+                <button type="submit" class="bg-brand-accent text-white px-4 py-2 rounded-lg">
+                    Bewerbung speichern
+                </button>
+            </div>
         </form>
     </div>
 </div>
