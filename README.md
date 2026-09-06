@@ -1,10 +1,11 @@
 # JobTracker
 
-Eine Laravel/Livewire-Webanwendung zur Verwaltung und statistischen Auswertung eigener Bewerbungen – mit Dashboard, Streak-System und automatischen Erinnerungen.
+Laravel/Livewire Webanwendung zur zentralen Verwaltung, Organisation und statistischen Auswertung von Bewerbungen. Mit übersichtlichem Dashboard, Streak-System und automatischen Erinnerungen für einen strukturierten und effizienten Bewerbungsprozess.
+
 
 ## Über das Projekt
 
-JobTracker ist ein persönliches Lern- und Portfolio-Projekt, das den gesamten Bewerbungsprozess an einem Ort abbildet: von der ersten Bewerbung über Ansprechpartner und Status-Verlauf bis hin zu Bewerbungsunterlagen (Lebenslauf, Anschreiben).
+JobTracker ist ein persönliches Lern und Portfolio Projekt, das den gesamten Bewerbungsprozess an einem Ort abbildet: von der ersten Bewerbung über Ansprechpartner und Status, Verlauf bis hin zu Bewerbungsunterlagen (Lebenslauf, Anschreiben).
 
 ## Tech-Stack
 
@@ -27,8 +28,8 @@ JobTracker ist ein persönliches Lern- und Portfolio-Projekt, das den gesamten B
 - [x] Eigenes Design für Login/Register (Split-Layout, Markenfarben)
 - [x] Bewerbungen anlegen (Modal auf der Übersichtsseite, mit Autocomplete/Find-or-Create für Firma und Kontakt)
 - [x] Übersichtsliste der Bewerbungen
-- [ ] Status einer Bewerbung ändern
-- [ ] Detailansicht einer einzelnen Bewerbung
+- [x] Status einer Bewerbung ändern
+- [x] Detailansicht einer einzelnen Bewerbung (Status-Verlauf, Notizen, Ansprechpartner)
 - [ ] Bewerbung bearbeiten/löschen
 - [ ] Dashboard/Statistiken
 - [ ] Gamification (Streak-System)
