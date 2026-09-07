@@ -30,7 +30,8 @@ JobTracker ist ein persönliches Lern und Portfolio Projekt, das den gesamten Be
 - [x] Übersichtsliste der Bewerbungen
 - [x] Status einer Bewerbung ändern
 - [x] Detailansicht einer einzelnen Bewerbung (Status-Verlauf, Notizen, Ansprechpartner)
-- [ ] Bewerbung bearbeiten/löschen
+- [x] Bewerbung bearbeiten (Modal mit vorausgefüllten Werten)
+- [x] Bewerbung löschen (mit Bestätigungsdialog)
 - [ ] Dashboard/Statistiken
 - [ ] Gamification (Streak-System)
 - [ ] Automatische E-Mail-Erinnerungen (5 Tage ohne Rückmeldung)
