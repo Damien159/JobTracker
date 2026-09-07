@@ -15,10 +15,12 @@
                     <span class="px-3 py-1 rounded-full text-xs bg-brand-gray/20 text-brand-dark dark:text-white">
                         {{ ucfirst($application->statusHistories->first()?->status ?? '—') }}
                     </span>
-                    <flux:button variant="ghost"
-                        wire:click="$dispatch('open-edit-modal', { applicationId: {{ $application->id }} })">
-                        Bearbeiten
-                    </flux:button>
+                    <flux:modal.trigger name="edit-application">
+                        <flux:button variant="ghost"
+                            wire:click="$dispatch('open-edit-modal', { applicationId: {{ $application->id }} })">
+                            Bearbeiten
+                        </flux:button>
+                    </flux:modal.trigger>
                     <flux:modal.trigger name="delete-confirm">
                         <flux:button variant="danger">Löschen</flux:button>
                     </flux:modal.trigger>
@@ -101,4 +103,24 @@
             </div>
         </div>
     </div>
+
+    <flux:modal name="edit-application" class="md:w-[600px]">
+        @livewire('applications.edit')
+    </flux:modal>
+
+    <flux:modal name="delete-confirm" class="md:w-96">
+        <div class="space-y-4">
+            <flux:heading size="lg">Bewerbung löschen?</flux:heading>
+            <p class="text-sm text-gray-500">
+                Diese Aktion kann nicht rückgängig gemacht werden. Die Bewerbung und ihr Verlauf werden endgültig
+                gelöscht.
+            </p>
+            <div class="flex justify-end gap-3">
+                <flux:modal.close>
+                    <flux:button variant="ghost">Abbrechen</flux:button>
+                </flux:modal.close>
+                <flux:button variant="danger" wire:click="delete">Endgültig löschen</flux:button>
+            </div>
+        </div>
+    </flux:modal>
 </div>

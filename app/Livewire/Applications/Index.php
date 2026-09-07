@@ -23,6 +23,7 @@ class Index extends Component
             'changed_at' => now(),
         ]);
     }
+    
     public function render()
     {
         $applications = Application::query()

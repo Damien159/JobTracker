@@ -58,8 +58,6 @@ class Edit extends Component
         $this->desiredSalary = $application->desired_salary;
         $this->applicationType = $application->application_type;
         $this->source = $application->source;
-
-        $this->dispatch('open-modal', name: 'edit-application');
     }
 
     public function updatedCompanyName(): void
