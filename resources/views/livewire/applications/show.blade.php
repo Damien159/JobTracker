@@ -11,9 +11,18 @@
                     <h1 class="text-2xl font-bold">{{ $application->job_title }}</h1>
                     <p class="text-gray-500">{{ $application->company->name }}</p>
                 </div>
-                <span class="px-3 py-1 rounded-full text-xs bg-brand-gray/20 text-brand-dark dark:text-white">
-                    {{ ucfirst($application->statusHistories->first()?->status ?? '—') }}
-                </span>
+                <div class="flex items-center gap-3">
+                    <span class="px-3 py-1 rounded-full text-xs bg-brand-gray/20 text-brand-dark dark:text-white">
+                        {{ ucfirst($application->statusHistories->first()?->status ?? '—') }}
+                    </span>
+                    <flux:button variant="ghost"
+                        wire:click="$dispatch('open-edit-modal', { applicationId: {{ $application->id }} })">
+                        Bearbeiten
+                    </flux:button>
+                    <flux:modal.trigger name="delete-confirm">
+                        <flux:button variant="danger">Löschen</flux:button>
+                    </flux:modal.trigger>
+                </div>
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 text-sm">
