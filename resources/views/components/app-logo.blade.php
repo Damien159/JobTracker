@@ -3,15 +3,17 @@
 ])
 
 @if($sidebar)
-    <flux:sidebar.brand :name="config('app.name', 'Laravel')" {{ $attributes }}>
-        <x-slot name="logo" class="flex aspect-square size-8 items-center justify-center rounded-md bg-accent-content text-accent-foreground">
-            <x-app-logo-icon class="size-5 fill-current text-white dark:text-black" />
-        </x-slot>
-    </flux:sidebar.brand>
+    <a href="{{ route('dashboard') }}" wire:navigate {{ $attributes }} class="flex items-center gap-2 py-2">
+        <flux:icon name="briefcase" class="size-7 text-brand-accent shrink-0" />
+        <span class="text-xl font-bold tracking-tight">
+            <span class="text-brand-accent">Job</span><span class="text-white">Tracker</span>
+        </span>
+    </a>
 @else
-    <flux:brand :name="config('app.name', 'Laravel')" {{ $attributes }}>
-        <x-slot name="logo" class="flex aspect-square size-8 items-center justify-center rounded-md bg-accent-content text-accent-foreground">
-            <x-app-logo-icon class="size-5 fill-current text-white dark:text-black" />
-        </x-slot>
-    </flux:brand>
+    <a href="{{ route('dashboard') }}" wire:navigate {{ $attributes }} class="flex items-center gap-3">
+        <flux:icon name="briefcase" class="size-9 text-brand-accent shrink-0" />
+        <span class="text-2xl font-bold tracking-tight">
+            <span class="text-brand-accent">Job</span><span class="text-white">Tracker</span>
+        </span>
+    </a>
 @endif

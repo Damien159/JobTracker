@@ -13,12 +13,11 @@
             <img src="{{ asset('images/pexels-anna-belousova-130658517-10325490.jpg') }}" alt=""
                 class="absolute inset-0 h-full w-full object-cover" />
             <div class="absolute inset-0 bg-brand-dark/75"></div>
-            <a href="{{ route('home') }}" class="relative z-20 flex items-center gap-2 text-lg font-medium"
-                wire:navigate>
-                <span class="flex h-10 w-10 items-center justify-center rounded-md">
-                    <x-app-logo-icon class="h-7 fill-current text-white" />
+            <a href="{{ route('home') }}" class="relative z-20 flex items-center gap-3" wire:navigate>
+                <flux:icon name="briefcase" class="size-9 text-brand-accent shrink-0" />
+                <span class="text-2xl font-bold tracking-tight">
+                    <span class="text-brand-accent">Job</span><span class="text-white">Tracker</span>
                 </span>
-                JobTracker
             </a>
 
             <div class="relative z-20 mt-auto space-y-6">
