@@ -101,6 +101,10 @@
                     </div>
                 @endif
             </div>
+            <div class="border rounded-lg p-6">
+                <h2 class="font-bold mb-4">Dokumente</h2>
+                @livewire('applications.document-upload', ['application' => $application])
+            </div>
         </div>
     </div>
 
