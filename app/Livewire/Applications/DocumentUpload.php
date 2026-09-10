@@ -19,7 +19,7 @@ class DocumentUpload extends Component
     public ?TemporaryUploadedFile $file = null;
     public string $type = 'lebenslauf';
 
-    public function upload(): void
+    public function saveDocument(): void
     {
         $this->validate([
             'file' => ['required', 'file', 'mimes:pdf,doc,docx', 'max:10240'],
