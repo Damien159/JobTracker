@@ -20,6 +20,6 @@ Route::get('/documents/{document}/download', function (\App\Models\ApplicationDo
         Storage::disk('local')->path($document->path),
         $document->original_filename
     );
-})->middleware(['auth'])->name('documents.download');
+})->middleware(['auth', 'verified'])->name('documents.download');
 
 require __DIR__.'/settings.php';

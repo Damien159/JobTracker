@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 
 class DocumentUpload extends Component
@@ -15,7 +16,7 @@ class DocumentUpload extends Component
     use WithFileUploads;
 
     public Application $application;
-    public $file = null;
+    public ?TemporaryUploadedFile $file = null;
     public string $type = 'lebenslauf';
 
     public function upload(): void

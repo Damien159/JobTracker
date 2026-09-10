@@ -11,7 +11,9 @@
 
         <div>
             <input type="file" wire:model="file" class="text-sm" accept=".pdf,.doc,.docx">
-            @error('file') <span class="text-red-600 text-xs">{{ $message }}</span> @enderror
+            @error('file')
+                <span class="text-red-600 text-xs">{{ $message }}</span>
+            @enderror
         </div>
 
         <div wire:loading wire:target="file" class="text-xs text-gray-500">Wird hochgeladen...</div>
@@ -30,10 +32,12 @@
                         <span class="text-gray-500 text-xs">({{ ucfirst($document->type) }})</span>
                     </div>
                     <div class="flex items-center gap-2">
-                        <a href="{{ route('documents.download', $document->id) }}" class="text-brand-accent text-xs" target="_blank">
+                        <a href="{{ route('documents.download', $document->id) }}" class="text-brand-accent text-xs"
+                            target="_blank">
                             Download
                         </a>
-                        <button wire:click="delete({{ $document->id }})" wire:confirm="Dokument wirklich löschen?" class="text-red-600 text-xs">
+                        <button wire:click="delete({{ $document->id }})" wire:confirm="Dokument wirklich löschen?"
+                            class="text-red-600 text-xs">
                             Löschen
                         </button>
                     </div>
