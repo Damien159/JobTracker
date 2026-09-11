@@ -91,6 +91,7 @@
                     <option value="firmenwebsite">Firmenwebsite</option>
                     <option value="karriereportal">Karriereportal</option>
                     <option value="empfehlung">Empfehlung</option>
+                    <option value="sozialmedia">Sozial-Media</option>
                     <option value="sonstiges">Sonstiges</option>
                 </select>
             </div>
