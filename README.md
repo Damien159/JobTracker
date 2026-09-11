@@ -33,7 +33,7 @@ JobTracker ist ein persönliches Lern und Portfolio Projekt, das den gesamten Be
 - [x] Bewerbung bearbeiten (Modal mit vorausgefüllten Werten)
 - [x] Bewerbung löschen (mit Bestätigungsdialog)
 - [x] Dashboard mit Kennzahlen (Gesamt, Interviews, Zusagen, Interview-Rate) und Charts (Status-Verteilung, Bewerbungen pro Monat via Chart.js)
-- [x] Dokumenten-Upload (Lebenslauf/Anschreiben)
+- [x] Dokumenten-Upload (Lebenslauf/Anschreiben, PDF/Word, privat gespeichert mit Zugriffskontrolle)
 - [ ] Gamification (Streak-System)
 - [ ] Automatische E-Mail-Erinnerungen (5 Tage ohne Rückmeldung)
 - [ ] Automatische E-Mail-Statuserkennung
