@@ -1,6 +1,7 @@
 <x-layouts::auth :title="__('Log in')">
     <div class="flex flex-col gap-6">
-        <x-auth-header :title="__('Log in to your account')" :description="__('Enter your email and password below to log in')" />
+        {{-- <div class="text-center"> <h1 class="text-2xl font-bold text-[#333333] dark:text-white"> Willkommen zurück </h1> <p class="mt-2 text-sm text-gray-500 dark:text-gray-400"> Melde dich an, um fortzufahren. </p> </div> --}}
+        <x-auth-header :title="__('Willkommen zurück')" :description="__('Melde dich an, um fortzufahren.')" />
 
         <!-- Session Status -->
         <x-auth-session-status class="text-center" :status="session('status')" />
