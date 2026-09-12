@@ -11,7 +11,7 @@
 
                 <select wire:model.live="statusFilter"
                     class="h-10 rounded-lg border border-gray-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm px-3 focus:ring-2 focus:ring-brand-accent">
-                    <option value="">Alle Status</option>
+                    <option value="">Status</option>
                     <option value="beworben">Beworben</option>
                     <option value="interview">Interview</option>
                     <option value="zusage">Zusage</option>

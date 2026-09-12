@@ -25,6 +25,26 @@
                     {{ __('Bewerbungen') }}
                 </flux:sidebar.item>
 
+                <flux:sidebar.item icon="briefcase" :href="route('applications.index')"
+                    :current="request()->routeIs('applications.*')" wire:navigate>
+                    {{ __('Kalender') }}
+                </flux:sidebar.item>
+
+                <flux:sidebar.item icon="briefcase" :href="route('applications.index')"
+                    :current="request()->routeIs('applications.*')" wire:navigate>
+                    {{ __('Unternehmen') }}
+                </flux:sidebar.item>
+
+                <flux:sidebar.item icon="briefcase" :href="route('applications.index')"
+                    :current="request()->routeIs('applications.*')" wire:navigate>
+                    {{ __('Kontakte') }}
+                </flux:sidebar.item>
+
+                <flux:sidebar.item icon="briefcase" :href="route('applications.index')"
+                    :current="request()->routeIs('applications.*')" wire:navigate>
+                    {{ __('Dokumente') }}
+                </flux:sidebar.item>
+
             </flux:sidebar.group>
         </flux:sidebar.nav>
 
