@@ -4,7 +4,6 @@
         <x-auth-header :title="__('Willkommen zurück')" :description="__('Melde dich an, um fortzufahren.')" />
 
         {{-- Google Login --}}
-
         <div>
             <flux:button variant="outline" type="button" class="w-full">
                 <svg class="w-5 h-5" viewBox="0 0 24 24" aria-hidden="true">
