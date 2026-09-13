@@ -4,6 +4,7 @@ namespace App\Livewire\Applications;
 
 use App\Models\Application;
 use App\Models\ApplicationDocument;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
@@ -52,7 +53,7 @@ class DocumentUpload extends Component
         $this->dispatch('document-uploaded');
     }
 
-    public function render()
+    public function render(): View
     {
         $documents = $this->application->documents()->latest('uploaded_at')->get();
 

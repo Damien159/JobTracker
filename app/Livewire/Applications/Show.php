@@ -3,6 +3,7 @@
 namespace App\Livewire\Applications;
 
 use App\Models\Application;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -34,7 +35,7 @@ class Show extends Component
         $this->redirect(route('applications.index'), navigate: true);
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.applications.show');
     }

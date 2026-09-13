@@ -4,6 +4,7 @@ namespace App\Livewire\Applications;
 
 use App\Models\Application;
 use App\Models\ApplicationStatusHistory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -33,7 +34,7 @@ class Index extends Component
         ]);
     }
 
-    public function render()
+    public function render(): View
     {
         $applications = Application::query()
             ->where('user_id', Auth::id())
