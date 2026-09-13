@@ -7,7 +7,9 @@
                 <label class="block text-sm font-medium mb-1">Firma</label>
                 <input type="text" wire:model.live.debounce.300ms="companyName"
                     class="w-full rounded-lg border-gray-300">
-                @error('companyName') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
+                @error('companyName')
+                    <span class="text-red-600 text-sm">{{ $message }}</span>
+                @enderror
 
                 @if (count($companySuggestions) > 0)
                     <ul class="absolute z-10 w-full bg-white border rounded-lg mt-1 shadow-lg">
@@ -40,15 +42,20 @@
                     @endif
                 </div>
 
-                <input type="email" wire:model="contactEmail" class="w-full rounded-lg border-gray-300 mb-3" placeholder="E-Mail">
-                <input type="text" wire:model="contactPhone" class="w-full rounded-lg border-gray-300 mb-3" placeholder="Telefon">
-                <input type="text" wire:model="contactPosition" class="w-full rounded-lg border-gray-300" placeholder="Position">
+                <input type="email" wire:model="contactEmail" class="w-full rounded-lg border-gray-300 mb-3"
+                    placeholder="E-Mail">
+                <input type="text" wire:model="contactPhone" class="w-full rounded-lg border-gray-300 mb-3"
+                    placeholder="Telefon">
+                <input type="text" wire:model="contactPosition" class="w-full rounded-lg border-gray-300"
+                    placeholder="Position">
             </fieldset>
 
             <div>
                 <label class="block text-sm font-medium mb-1">Position / Jobtitel</label>
                 <input type="text" wire:model="jobTitle" class="w-full rounded-lg border-gray-300">
-                @error('jobTitle') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
+                @error('jobTitle')
+                    <span class="text-red-600 text-sm">{{ $message }}</span>
+                @enderror
             </div>
 
             <div>
@@ -63,7 +70,8 @@
 
             <div>
                 <label class="block text-sm font-medium mb-1">Gehaltswunsch (€)</label>
-                <input type="number" step="0.01" wire:model="desiredSalary" class="w-full rounded-lg border-gray-300">
+                <input type="number" step="0.01" wire:model="desiredSalary"
+                    class="w-full rounded-lg border-gray-300">
             </div>
 
             <div>
@@ -89,6 +97,12 @@
             <div>
                 <label class="block text-sm font-medium mb-1">Notizen</label>
                 <textarea wire:model="notes" rows="3" class="w-full rounded-lg border-gray-300"></textarea>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium mb-1">Tags (kommagetrennt)</label>
+                <input type="text" wire:model="tags" class="w-full rounded-lg border-gray-300"
+                    placeholder="z. B. React, Remote, TypeScript">
             </div>
 
             <div class="flex justify-end gap-3">

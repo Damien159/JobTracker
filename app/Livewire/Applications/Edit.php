@@ -29,6 +29,7 @@ class Edit extends Component
     public string $applicationDate = '';
     public string $jobPostingUrl = '';
     public string $notes = '';
+    public string $tags = '';
     public ?float $desiredSalary = null;
     public string $applicationType = 'ausschreibung';
     public string $source = 'linkedin';
@@ -55,6 +56,7 @@ class Edit extends Component
         $this->applicationDate = $application->application_date->format('Y-m-d');
         $this->jobPostingUrl = $application->job_posting_url ?? '';
         $this->notes = $application->notes ?? '';
+        $this->tags = $application->tags ?? '';
         $this->desiredSalary = $application->desired_salary;
         $this->applicationType = $application->application_type;
         $this->source = $application->source;
@@ -150,6 +152,7 @@ class Edit extends Component
             'application_date' => $this->applicationDate,
             'job_posting_url' => $this->jobPostingUrl ?: null,
             'notes' => $this->notes ?: null,
+            'tags' => $this->tags ?: null,
             'desired_salary' => $this->desiredSalary,
             'application_type' => $this->applicationType,
             'source' => $this->source,

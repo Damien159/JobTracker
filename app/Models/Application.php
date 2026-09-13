@@ -16,6 +16,7 @@ class Application extends Model
         'application_date',
         'job_posting_url',
         'notes',
+        'tags',
         'desired_salary',
         'application_type',
         'source',

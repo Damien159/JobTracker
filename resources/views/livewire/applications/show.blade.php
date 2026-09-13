@@ -1,4 +1,4 @@
-<div>
+<div x-data="{ tab: 'uebersicht' }">
     <div class="max-w-5xl mx-auto p-6 space-y-6">
         <a href="{{ route('applications.index') }}" wire:navigate
             class="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-brand-accent transition-colors">
@@ -14,6 +14,7 @@
                 'absage' => 'bg-red-500/10 text-red-600 dark:text-red-400',
             ];
             $currentStatus = $application->statusHistories->first()?->status ?? 'beworben';
+            $tagList = $application->tags ? array_map('trim', explode(',', $application->tags)) : [];
         @endphp
 
         {{-- Kopfbereich --}}
@@ -88,10 +89,25 @@
             @endif
         </div>
 
-        <div class="grid md:grid-cols-3 gap-6">
-            {{-- Hauptspalte --}}
+        {{-- Tab-Leiste --}}
+        <div class="border-b border-gray-200 dark:border-neutral-800 flex gap-6 text-sm">
+            <button @click="tab = 'uebersicht'" :class="tab === 'uebersicht' ? 'text-brand-accent border-brand-accent' : 'text-gray-500 border-transparent'" class="pb-3 border-b-2 font-medium transition-colors">
+                Übersicht
+            </button>
+            <button @click="tab = 'dokumente'" :class="tab === 'dokumente' ? 'text-brand-accent border-brand-accent' : 'text-gray-500 border-transparent'" class="pb-3 border-b-2 font-medium transition-colors">
+                Dokumente
+            </button>
+            <button @click="tab = 'aufgaben'" :class="tab === 'aufgaben' ? 'text-brand-accent border-brand-accent' : 'text-gray-500 border-transparent'" class="pb-3 border-b-2 font-medium transition-colors">
+                Aufgaben
+            </button>
+            <button @click="tab = 'kommunikation'" :class="tab === 'kommunikation' ? 'text-brand-accent border-brand-accent' : 'text-gray-500 border-transparent'" class="pb-3 border-b-2 font-medium transition-colors">
+                Kommunikation
+            </button>
+        </div>
+
+        {{-- Tab: Übersicht --}}
+        <div x-show="tab === 'uebersicht'" class="grid md:grid-cols-3 gap-6">
             <div class="md:col-span-2 space-y-6">
-                {{-- Status-Verlauf --}}
                 <div class="border border-gray-200 dark:border-neutral-800 rounded-xl bg-white dark:bg-neutral-900 shadow-sm p-6">
                     <h2 class="font-bold mb-4">Status-Verlauf</h2>
                     <ul class="space-y-4">
@@ -107,7 +123,6 @@
                     </ul>
                 </div>
 
-                {{-- Notizen --}}
                 @if ($application->notes)
                     <div class="border border-gray-200 dark:border-neutral-800 rounded-xl bg-white dark:bg-neutral-900 shadow-sm p-6">
                         <h2 class="font-bold mb-4">Notizen</h2>
@@ -116,7 +131,6 @@
                 @endif
             </div>
 
-            {{-- Seitenspalte --}}
             <div class="space-y-6">
                 @if ($application->contact)
                     <div class="border border-gray-200 dark:border-neutral-800 rounded-xl bg-white dark:bg-neutral-900 shadow-sm p-6">
@@ -149,11 +163,45 @@
                     </div>
                 @endif
 
-                {{-- Dokumente --}}
-                <div class="border border-gray-200 dark:border-neutral-800 rounded-xl bg-white dark:bg-neutral-900 shadow-sm p-6">
-                    <h2 class="font-bold mb-4">Dokumente</h2>
-                    <livewire:applications.document-upload :application="$application" :key="'document-upload-' . $application->id" />
+                @if (!empty($tagList))
+                    <div class="border border-gray-200 dark:border-neutral-800 rounded-xl bg-white dark:bg-neutral-900 shadow-sm p-6">
+                        <h2 class="font-bold mb-4">Tags</h2>
+                        <div class="flex flex-wrap gap-2">
+                            @foreach ($tagList as $tag)
+                                <span class="px-2.5 py-1 rounded-full text-xs bg-brand-gray/20 text-brand-dark dark:text-white">
+                                    {{ $tag }}
+                                </span>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+            </div>
+        </div>
+
+        {{-- Tab: Dokumente --}}
+        <div x-show="tab === 'dokumente'">
+            <div class="border border-gray-200 dark:border-neutral-800 rounded-xl bg-white dark:bg-neutral-900 shadow-sm p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="font-bold">Dokumente</h2>
+                    <flux:icon name="paper-clip" class="size-4 text-gray-400" />
                 </div>
+                <livewire:applications.document-upload :application="$application" :key="'document-upload-' . $application->id" />
+            </div>
+        </div>
+
+        {{-- Tab: Aufgaben (Platzhalter) --}}
+        <div x-show="tab === 'aufgaben'">
+            <div class="border border-gray-200 dark:border-neutral-800 rounded-xl bg-white dark:bg-neutral-900 shadow-sm p-10 text-center">
+                <flux:icon name="clipboard-document-check" class="size-8 text-gray-300 mx-auto mb-3" />
+                <p class="text-gray-500 text-sm">Aufgaben sind bald verfügbar.</p>
+            </div>
+        </div>
+
+        {{-- Tab: Kommunikation (Platzhalter) --}}
+        <div x-show="tab === 'kommunikation'">
+            <div class="border border-gray-200 dark:border-neutral-800 rounded-xl bg-white dark:bg-neutral-900 shadow-sm p-10 text-center">
+                <flux:icon name="chat-bubble-left-right" class="size-8 text-gray-300 mx-auto mb-3" />
+                <p class="text-gray-500 text-sm">Kommunikationsverlauf ist bald verfügbar.</p>
             </div>
         </div>
     </div>

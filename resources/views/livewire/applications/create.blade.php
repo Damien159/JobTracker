@@ -101,6 +101,12 @@
                 <textarea wire:model="notes" rows="3" class="w-full rounded-lg border-gray-300"></textarea>
             </div>
 
+            <div>
+                <label class="block text-sm font-medium mb-1">Tags (kommagetrennt)</label>
+                <input type="text" wire:model="tags" class="w-full rounded-lg border-gray-300"
+                    placeholder="z. B. React, Remote, TypeScript">
+            </div>
+
             <div class="flex justify-end gap-3">
                 <flux:modal.close>
                     <flux:button variant="ghost">Abbrechen</flux:button>

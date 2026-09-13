@@ -11,6 +11,7 @@ use Livewire\Component;
 
 class Create extends Component
 {
+    public string $tags = '';
     // Firma
     public string $companyName = '';
     public string $companyWebsite = '';
@@ -113,6 +114,7 @@ class Create extends Component
             'desiredSalary' => ['nullable', 'numeric', 'min:0'],
             'applicationType' => ['required', 'in:initiativ,ausschreibung'],
             'source' => ['required', 'in:linkedin,firmenwebsite,karriereportal,empfehlung,sonstiges'],
+            'tags' => $this->tags ?: null,
         ]);
 
         // Firma: bestehende verwenden, oder neue anlegen (find-or-create)
