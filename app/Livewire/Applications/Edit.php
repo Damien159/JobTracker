@@ -5,6 +5,7 @@ namespace App\Livewire\Applications;
 use App\Models\Application;
 use App\Models\Company;
 use App\Models\Contact;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -17,6 +18,7 @@ class Edit extends Component
 
     public string $companyWebsite = '';
 
+    /** @var array<int, array{id: int, name: string}> */
     public array $companySuggestions = [];
 
     public ?int $selectedCompanyId = null;
@@ -29,6 +31,7 @@ class Edit extends Component
 
     public string $contactPosition = '';
 
+    /** @var array<int, array{id: int, name: string, email: ?string, phone: ?string, position: ?string}> */
     public array $contactSuggestions = [];
 
     public ?int $selectedContactId = null;
@@ -43,7 +46,7 @@ class Edit extends Component
 
     public string $tags = '';
 
-    public ?float $desiredSalary = null;
+    public float|string|null $desiredSalary = null;
 
     public string $applicationType = 'ausschreibung';
 
@@ -52,20 +55,27 @@ class Edit extends Component
     #[On('open-edit-modal')]
     public function loadApplication(int $applicationId): void
     {
+        /** @var Application $application */
         $application = Application::where('user_id', Auth::id())
             ->with(['company', 'contact'])
             ->findOrFail($applicationId);
 
+        /** @var Company $company */
+        $company = $application->company;
+
+        /** @var Contact|null $contact */
+        $contact = $application->contact;
+
         $this->applicationId = $application->id;
         $this->selectedCompanyId = $application->company_id;
-        $this->companyName = $application->company->name;
-        $this->companyWebsite = $application->company->website ?? '';
+        $this->companyName = $company->name;
+        $this->companyWebsite = $company->website ?? '';
 
         $this->selectedContactId = $application->contact_id;
-        $this->contactName = $application->contact?->name ?? '';
-        $this->contactEmail = $application->contact?->email ?? '';
-        $this->contactPhone = $application->contact?->phone ?? '';
-        $this->contactPosition = $application->contact?->position ?? '';
+        $this->contactName = $contact->name ?? '';
+        $this->contactEmail = $contact->email ?? '';
+        $this->contactPhone = $contact->phone ?? '';
+        $this->contactPosition = $contact->position ?? '';
 
         $this->jobTitle = $application->job_title;
         $this->applicationDate = $application->application_date->format('Y-m-d');
@@ -119,6 +129,7 @@ class Edit extends Component
 
     public function selectContact(int $contactId): void
     {
+        /** @var Contact $contact */
         $contact = Contact::findOrFail($contactId);
 
         $this->selectedContactId = $contact->id;
@@ -143,14 +154,17 @@ class Edit extends Component
             'source' => ['required', 'in:linkedin,firmenwebsite,karriereportal,empfehlung,sonstiges'],
         ]);
 
+        /** @var Application $application */
         $application = Application::where('user_id', Auth::id())->findOrFail($this->applicationId);
 
+        /** @var Company $company */
         $company = $this->selectedCompanyId
             ? Company::findOrFail($this->selectedCompanyId)
             : Company::create(['name' => $this->companyName, 'website' => $this->companyWebsite ?: null]);
 
         $contact = null;
         if (! empty($this->contactName)) {
+            /** @var Contact $contact */
             $contact = $this->selectedContactId
                 ? Contact::findOrFail($this->selectedContactId)
                 : Contact::create([
@@ -170,7 +184,7 @@ class Edit extends Component
             'job_posting_url' => $this->jobPostingUrl ?: null,
             'notes' => $this->notes ?: null,
             'tags' => $this->tags ?: null,
-            'desired_salary' => $this->desiredSalary,
+            'desired_salary' => $this->desiredSalary !== null && $this->desiredSalary !== '' ? (float) $this->desiredSalary : null,
             'application_type' => $this->applicationType,
             'source' => $this->source,
         ]);
@@ -179,7 +193,7 @@ class Edit extends Component
         $this->dispatch('close-modal', name: 'edit-application');
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.applications.edit');
     }

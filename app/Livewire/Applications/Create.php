@@ -6,6 +6,7 @@ use App\Models\Application;
 use App\Models\ApplicationStatusHistory;
 use App\Models\Company;
 use App\Models\Contact;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -18,6 +19,7 @@ class Create extends Component
 
     public string $companyWebsite = '';
 
+    /** @var array<int, array{id: int, name: string}> */
     public array $companySuggestions = [];
 
     public ?int $selectedCompanyId = null;
@@ -31,6 +33,7 @@ class Create extends Component
 
     public string $contactPosition = '';
 
+    /** @var array<int, array{id: int, name: string, email: ?string, phone: ?string, position: ?string}> */
     public array $contactSuggestions = [];
 
     public ?int $selectedContactId = null;
@@ -101,6 +104,7 @@ class Create extends Component
 
     public function selectContact(int $contactId): void
     {
+        /** @var Contact $contact */
         $contact = Contact::findOrFail($contactId);
 
         $this->selectedContactId = $contact->id;
@@ -135,6 +139,7 @@ class Create extends Component
         ]);
 
         // Firma: bestehende verwenden, oder neue anlegen (find-or-create)
+        /** @var Company $company */
         $company = $this->selectedCompanyId
             ? Company::findOrFail($this->selectedCompanyId)
             : Company::create([
@@ -145,6 +150,7 @@ class Create extends Component
         // Kontakt: nur wenn Name angegeben wurde
         $contact = null;
         if (! empty($this->contactName)) {
+            /** @var Contact $contact */
             $contact = $this->selectedContactId
                 ? Contact::findOrFail($this->selectedContactId)
                 : Contact::create([
@@ -180,7 +186,7 @@ class Create extends Component
         $this->dispatch('close-modal', name: 'create-application'); // Modal schließen
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.applications.create');
     }
