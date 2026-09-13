@@ -4,19 +4,19 @@ namespace App\Livewire\Applications;
 
 use App\Models\Application;
 use App\Models\ApplicationDocument;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
-use Livewire\WithFileUploads;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
-
+use Livewire\WithFileUploads;
 
 class DocumentUpload extends Component
 {
     use WithFileUploads;
 
     public Application $application;
+
     public ?TemporaryUploadedFile $file = null;
+
     public string $type = 'lebenslauf';
 
     public function saveDocument(): void
@@ -26,7 +26,7 @@ class DocumentUpload extends Component
             'type' => ['required', 'in:lebenslauf,anschreiben,sonstiges'],
         ]);
 
-        $path = $this->file->store('application-documents/' . $this->application->id, 'local');
+        $path = $this->file->store('application-documents/'.$this->application->id, 'local');
 
         ApplicationDocument::create([
             'application_id' => $this->application->id,

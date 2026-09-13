@@ -21,4 +21,3 @@ class ApplicationDocument extends Model
         return $this->belongsTo(Application::class);
     }
 }
-

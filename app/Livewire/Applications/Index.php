@@ -11,7 +11,9 @@ use Livewire\Component;
 class Index extends Component
 {
     public string $search = '';
+
     public string $statusFilter = '';
+
     public string $sortBy = 'date';
 
     #[On('application-created')]
@@ -38,8 +40,8 @@ class Index extends Component
             ->with(['company', 'statusHistories'])
             ->when($this->search, function ($query) {
                 $query->where(function ($q) {
-                    $q->where('job_title', 'like', '%' . $this->search . '%')
-                        ->orWhereHas('company', fn($q) => $q->where('name', 'like', '%' . $this->search . '%'));
+                    $q->where('job_title', 'like', '%'.$this->search.'%')
+                        ->orWhereHas('company', fn ($q) => $q->where('name', 'like', '%'.$this->search.'%'));
                 });
             })
             ->when($this->statusFilter, function ($query) {
@@ -52,8 +54,8 @@ class Index extends Component
                         });
                 });
             })
-            ->when($this->sortBy === 'company', fn($q) => $q->join('companies', 'companies.id', '=', 'applications.company_id')->orderBy('companies.name')->select('applications.*'))
-            ->when($this->sortBy === 'date', fn($q) => $q->latest('application_date'))
+            ->when($this->sortBy === 'company', fn ($q) => $q->join('companies', 'companies.id', '=', 'applications.company_id')->orderBy('companies.name')->select('applications.*'))
+            ->when($this->sortBy === 'date', fn ($q) => $q->latest('application_date'))
             ->get();
 
         return view('livewire.applications.index', [

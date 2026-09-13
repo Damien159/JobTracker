@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ApplicationStatusHistory extends Model
 {
@@ -19,4 +18,3 @@ class ApplicationStatusHistory extends Model
         return $this->belongsTo(Application::class);
     }
 }
-

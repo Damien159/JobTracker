@@ -1,5 +1,9 @@
 <?php
 
+use App\Livewire\Applications\Index;
+use App\Livewire\Applications\Show;
+use App\Livewire\Dashboard;
+use App\Models\ApplicationDocument;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
@@ -8,12 +12,12 @@ use Illuminate\Support\Facades\Storage;
 Route::redirect('/', '/login')->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('dashboard', \App\Livewire\Dashboard::class)->name('dashboard');
-    Route::get('/applications', \App\Livewire\Applications\Index::class)->name('applications.index');
-    Route::get('/applications/{applicationId}', \App\Livewire\Applications\Show::class)->name('applications.show');
+    Route::get('dashboard', Dashboard::class)->name('dashboard');
+    Route::get('/applications', Index::class)->name('applications.index');
+    Route::get('/applications/{applicationId}', Show::class)->name('applications.show');
 });
 
-Route::get('/documents/{document}/download', function (\App\Models\ApplicationDocument $document) {
+Route::get('/documents/{document}/download', function (ApplicationDocument $document) {
     abort_unless($document->application->user_id === Auth::id(), 403);
 
     return response()->download(

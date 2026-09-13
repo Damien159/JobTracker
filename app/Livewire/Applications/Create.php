@@ -12,27 +12,42 @@ use Livewire\Component;
 class Create extends Component
 {
     public string $tags = '';
+
     // Firma
     public string $companyName = '';
+
     public string $companyWebsite = '';
+
     public array $companySuggestions = [];
+
     public ?int $selectedCompanyId = null;
 
     // Kontakt
     public string $contactName = '';
+
     public string $contactEmail = '';
+
     public string $contactPhone = '';
+
     public string $contactPosition = '';
+
     public array $contactSuggestions = [];
+
     public ?int $selectedContactId = null;
 
     // Bewerbung
     public string $jobTitle = '';
+
     public string $applicationDate;
+
     public string $jobPostingUrl = '';
+
     public string $notes = '';
+
     public ?float $desiredSalary = null;
+
     public string $applicationType = 'ausschreibung';
+
     public string $source = 'linkedin';
 
     public function mount(): void
@@ -47,10 +62,11 @@ class Create extends Component
 
         if (strlen($this->companyName) < 2) {
             $this->companySuggestions = [];
+
             return;
         }
 
-        $this->companySuggestions = Company::where('name', 'like', '%' . $this->companyName . '%')
+        $this->companySuggestions = Company::where('name', 'like', '%'.$this->companyName.'%')
             ->limit(5)
             ->get(['id', 'name'])
             ->toArray();
@@ -72,11 +88,12 @@ class Create extends Component
 
         if ($this->selectedCompanyId === null || strlen($this->contactName) < 2) {
             $this->contactSuggestions = [];
+
             return;
         }
 
         $this->contactSuggestions = Contact::where('company_id', $this->selectedCompanyId)
-            ->where('name', 'like', '%' . $this->contactName . '%')
+            ->where('name', 'like', '%'.$this->contactName.'%')
             ->limit(5)
             ->get(['id', 'name', 'email', 'phone', 'position'])
             ->toArray();
@@ -127,7 +144,7 @@ class Create extends Component
 
         // Kontakt: nur wenn Name angegeben wurde
         $contact = null;
-        if (!empty($this->contactName)) {
+        if (! empty($this->contactName)) {
             $contact = $this->selectedContactId
                 ? Contact::findOrFail($this->selectedContactId)
                 : Contact::create([

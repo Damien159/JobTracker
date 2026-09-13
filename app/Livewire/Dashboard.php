@@ -17,7 +17,7 @@ class Dashboard extends Component
         $total = $applications->count();
 
         $statusCounts = $applications
-            ->map(fn($app) => $app->statusHistories->first()?->status ?? 'beworben')
+            ->map(fn ($app) => $app->statusHistories->first()?->status ?? 'beworben')
             ->countBy();
 
         $interviewOrBetter = $statusCounts->only(['interview', 'zusage'])->sum();
@@ -25,7 +25,7 @@ class Dashboard extends Component
 
         // Bewerbungen pro Monat (letzte 6 Monate)
         $monthlyData = $applications
-            ->groupBy(fn($app) => $app->application_date->format('Y-m'))
+            ->groupBy(fn ($app) => $app->application_date->format('Y-m'))
             ->map->count()
             ->sortKeys()
             ->slice(-6);
