@@ -10,11 +10,17 @@ class Contact extends Model
 {
     protected $fillable = ['company_id', 'name', 'email', 'phone', 'position'];
 
+    /**
+     * @return BelongsTo<Company, self>
+     */
     public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class);
     }
 
+    /**
+     * @return HasMany<Application>
+     */
     public function applications(): HasMany
     {
         return $this->hasMany(Application::class);

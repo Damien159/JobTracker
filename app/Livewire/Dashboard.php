@@ -19,7 +19,7 @@ class Dashboard extends Component
         $total = $applications->count();
 
         $statusCounts = $applications
-            ->map(fn ($app) => $app->statusHistories->first()?->status ?? 'beworben')
+            ->map(fn ($app) => $app->statusHistories->first()->status ?? 'beworben')
             ->countBy();
 
         $interviewOrBetter = $statusCounts->only(['interview', 'zusage'])->sum();

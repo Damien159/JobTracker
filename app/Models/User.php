@@ -61,6 +61,9 @@ class User extends Authenticatable implements PasskeyUser
             : $initials;
     }
 
+    /**
+     * @return HasMany<Application>
+     */
     public function applications(): HasMany
     {
         return $this->hasMany(Application::class);

@@ -27,26 +27,41 @@ class Application extends Model
         'desired_salary' => 'decimal:2',
     ];
 
+    /**
+     * @return BelongsTo<User, self>
+     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * @return BelongsTo<Company, self>
+     */
     public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class);
     }
 
+    /**
+     * @return BelongsTo<Contact, self>
+     */
     public function contact(): BelongsTo
     {
         return $this->belongsTo(Contact::class);
     }
 
+    /**
+     * @return HasMany<ApplicationStatusHistory>
+     */
     public function statusHistories(): HasMany
     {
         return $this->hasMany(ApplicationStatusHistory::class)->orderByDesc('changed_at');
     }
 
+    /**
+     * @return HasMany<ApplicationDocument>
+     */
     public function documents(): HasMany
     {
         return $this->hasMany(ApplicationDocument::class);

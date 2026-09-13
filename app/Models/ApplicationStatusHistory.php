@@ -13,6 +13,9 @@ class ApplicationStatusHistory extends Model
         'changed_at' => 'datetime',
     ];
 
+    /**
+     * @return BelongsTo<Application, self>
+     */
     public function application(): BelongsTo
     {
         return $this->belongsTo(Application::class);

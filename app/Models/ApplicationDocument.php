@@ -16,6 +16,9 @@ class ApplicationDocument extends Model
         'uploaded_at' => 'datetime',
     ];
 
+    /**
+     * @return BelongsTo<Application, self>
+     */
     public function application(): BelongsTo
     {
         return $this->belongsTo(Application::class);
