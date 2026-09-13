@@ -11,7 +11,7 @@ class Contact extends Model
     protected $fillable = ['company_id', 'name', 'email', 'phone', 'position'];
 
     /**
-     * @phpstan-return BelongsTo<Company, self>
+     * @return BelongsTo<\App\Models\Company, $this>
      */
     public function company(): BelongsTo
     {
@@ -19,7 +19,7 @@ class Contact extends Model
     }
 
     /**
-     * @phpstan-return HasMany<Application, self>
+     * @return HasMany<\App\Models\Application, $this>
      */
     public function applications(): HasMany
     {
