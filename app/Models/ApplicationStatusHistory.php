@@ -14,7 +14,7 @@ class ApplicationStatusHistory extends Model
     ];
 
     /**
-     * @return BelongsTo<Application, ApplicationStatusHistory>
+     * @phpstan-return BelongsTo<Application, self>
      */
     public function application(): BelongsTo
     {

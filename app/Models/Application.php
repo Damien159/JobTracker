@@ -28,7 +28,7 @@ class Application extends Model
     ];
 
     /**
-     * @return BelongsTo<User, Application>
+     * @phpstan-return BelongsTo<User, self>
      */
     public function user(): BelongsTo
     {
@@ -36,7 +36,7 @@ class Application extends Model
     }
 
     /**
-     * @return BelongsTo<Company, Application>
+     * @phpstan-return BelongsTo<Company, self>
      */
     public function company(): BelongsTo
     {
@@ -44,7 +44,7 @@ class Application extends Model
     }
 
     /**
-     * @return BelongsTo<Contact, Application>
+     * @phpstan-return BelongsTo<Contact, self>
      */
     public function contact(): BelongsTo
     {
@@ -52,7 +52,7 @@ class Application extends Model
     }
 
     /**
-     * @return HasMany<ApplicationStatusHistory, Application>
+     * @phpstan-return HasMany<ApplicationStatusHistory, self>
      */
     public function statusHistories(): HasMany
     {
@@ -60,7 +60,7 @@ class Application extends Model
     }
 
     /**
-     * @return HasMany<ApplicationDocument, Application>
+     * @phpstan-return HasMany<ApplicationDocument, self>
      */
     public function documents(): HasMany
     {

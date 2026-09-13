@@ -17,7 +17,7 @@ class ApplicationDocument extends Model
     ];
 
     /**
-     * @return BelongsTo<Application, ApplicationDocument>
+     * @phpstan-return BelongsTo<Application, self>
      */
     public function application(): BelongsTo
     {

@@ -10,7 +10,7 @@ class Company extends Model
     protected $fillable = ['name', 'website', 'notes'];
 
     /**
-     * @return HasMany<Contact, Company>
+     * @phpstan-return HasMany<Contact, self>
      */
     public function contacts(): HasMany
     {
@@ -18,7 +18,7 @@ class Company extends Model
     }
 
     /**
-     * @return HasMany<Application, Company>
+     * @phpstan-return HasMany<Application, self>
      */
     public function applications(): HasMany
     {

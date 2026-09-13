@@ -62,7 +62,7 @@ class User extends Authenticatable implements PasskeyUser
     }
 
     /**
-     * @return HasMany<Application, User>
+     * @phpstan-return HasMany<Application, self>
      */
     public function applications(): HasMany
     {
