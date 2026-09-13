@@ -27,6 +27,11 @@ class Application extends Model
         'desired_salary' => 'decimal:2',
     ];
 
+    public function application(): BelongsTo
+    {
+        return $this->belongsTo(Application::class);
+    }
+
     /**
      * @phpstan-return BelongsTo<User, self>
      */

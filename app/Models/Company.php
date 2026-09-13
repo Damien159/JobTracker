@@ -9,16 +9,13 @@ class Company extends Model
 {
     protected $fillable = ['name', 'website', 'notes'];
 
-    /**
-     * @phpstan-return HasMany<Contact, self>
-     */
     public function contacts(): HasMany
     {
         return $this->hasMany(Contact::class);
     }
 
     /**
-     * @phpstan-return HasMany<Application, self>
+     * @return HasMany<\App\Models\Application, $this>
      */
     public function applications(): HasMany
     {
