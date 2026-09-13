@@ -62,7 +62,7 @@ class User extends Authenticatable implements PasskeyUser
     }
 
     /**
-     * @return HasMany<Application>
+     * @return HasMany<Application, User>
      */
     public function applications(): HasMany
     {

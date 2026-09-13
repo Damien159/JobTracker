@@ -28,7 +28,7 @@ class Application extends Model
     ];
 
     /**
-     * @return BelongsTo<User, self>
+     * @return BelongsTo<User, Application>
      */
     public function user(): BelongsTo
     {
@@ -36,7 +36,7 @@ class Application extends Model
     }
 
     /**
-     * @return BelongsTo<Company, self>
+     * @return BelongsTo<Company, Application>
      */
     public function company(): BelongsTo
     {
@@ -44,7 +44,7 @@ class Application extends Model
     }
 
     /**
-     * @return BelongsTo<Contact, self>
+     * @return BelongsTo<Contact, Application>
      */
     public function contact(): BelongsTo
     {
@@ -52,7 +52,7 @@ class Application extends Model
     }
 
     /**
-     * @return HasMany<ApplicationStatusHistory>
+     * @return HasMany<ApplicationStatusHistory, Application>
      */
     public function statusHistories(): HasMany
     {
@@ -60,7 +60,7 @@ class Application extends Model
     }
 
     /**
-     * @return HasMany<ApplicationDocument>
+     * @return HasMany<ApplicationDocument, Application>
      */
     public function documents(): HasMany
     {

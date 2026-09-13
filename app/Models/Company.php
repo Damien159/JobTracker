@@ -10,7 +10,7 @@ class Company extends Model
     protected $fillable = ['name', 'website', 'notes'];
 
     /**
-     * @return HasMany<Contact>
+     * @return HasMany<Contact, Company>
      */
     public function contacts(): HasMany
     {
@@ -18,7 +18,7 @@ class Company extends Model
     }
 
     /**
-     * @return HasMany<Application>
+     * @return HasMany<Application, Company>
      */
     public function applications(): HasMany
     {

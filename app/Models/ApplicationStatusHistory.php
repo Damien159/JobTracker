@@ -14,7 +14,7 @@ class ApplicationStatusHistory extends Model
     ];
 
     /**
-     * @return BelongsTo<Application, self>
+     * @return BelongsTo<Application, ApplicationStatusHistory>
      */
     public function application(): BelongsTo
     {

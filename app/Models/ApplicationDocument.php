@@ -17,7 +17,7 @@ class ApplicationDocument extends Model
     ];
 
     /**
-     * @return BelongsTo<Application, self>
+     * @return BelongsTo<Application, ApplicationDocument>
      */
     public function application(): BelongsTo
     {

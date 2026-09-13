@@ -11,7 +11,7 @@ class Contact extends Model
     protected $fillable = ['company_id', 'name', 'email', 'phone', 'position'];
 
     /**
-     * @return BelongsTo<Company, self>
+     * @return BelongsTo<Company, Contact>
      */
     public function company(): BelongsTo
     {
@@ -19,7 +19,7 @@ class Contact extends Model
     }
 
     /**
-     * @return HasMany<Application>
+     * @return HasMany<Application, Contact>
      */
     public function applications(): HasMany
     {
